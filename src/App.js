@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import Router from './router'
+import { useDispatch } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { loadProducts } from "./redux/slices/productosSlice";
+import { loadUser } from "./redux/slices/usuarioSlice";
 
-export default App;
+import products from "./data/products.json";
+import profile from "./data/profile.json";
+
+export const App = () => {
+  const dispatch = useDispatch();
+  dispatch(loadProducts(products.productos));
+  dispatch(loadUser(profile.profile));
+return (<Router/>)}
